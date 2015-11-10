@@ -1,4 +1,6 @@
-open(LOG,"<access_log-20150901");
+$fileName = $ARGV[0];
+
+open(LOG,"<". $fileName);
 
 my $REMOTE_HOST;
 my $FI;
@@ -39,18 +41,6 @@ while(<LOG>)
     $USER_AGENT=$9;
     $USER_AGENT =~ s/,/ /g;
 
-#    print $REMOTE_HOST ."\n";
-#    print $FI ."\n";
-#    print $REMOTE_USER ."\n";
-#    print $DATE_TIME ."\n";
-#    print $METHOD ."\n";
-#    print $REQUEST_URL ."\n";
-#    print $HTTP_VERSION ."\n";
-#   print $HTTP_RESPONSE ."\n";
-#    print $DATA_BYTES ."\n";
-#    print $REFERER ."\n";
-#    print $USER_AGENT ."\n";
-
     @temp = split(/\//,$DATE_TIME);
     $DATE_DAY = $temp[0];
     $DATE_MONTH = convertMonth($temp[1]);
@@ -69,6 +59,7 @@ while(<LOG>)
 
     $tLine++;
 }
+
 
 sub convertMonth {
 
