@@ -64,7 +64,8 @@ try {
 		        Write-Host ("■Debug■値を取得しました")  
 		        Write-Host ("■Debug■アプリケーション名：" + $ItemProperty.DisplayName )
 		        Write-Host ("■Debug■アプリケーションバージョン：" + $ItemProperty.DisplayVersion  )
-		        Write-Host ("■Debug■製造元：" + $ItemProperty.Publisher)。
+		        Write-Host ("■Debug■製造元：" + $ItemProperty.Publisher)
+		        Write-Host ("■Debug■インストール日：" + $ItemProperty.InstallDate)
 
 		        #日付の書式を整形
         #		$LogTimeGenerated = [string]$row.TimeGenerated.ToString("yyyy/MM/dd HH:ss:mm")
@@ -93,8 +94,16 @@ try {
 			        $Publisher = $Publisher.Replace(","," ")
                        }
 
+                       #インストール日
+                       $InstallDate = $ItemProperty.InstallDate
+
+                       if($InstallDate -ne $null) {
+			        #InstallDateに入っているカンマを変換
+			        $InstallDate = $InstallDate.Replace(","," ")
+                       }
+
 		        #エクスポート文字列整形
-                        $line =  $LogTimeGenerated + "," + $hostname + "," + $applcation + "," + $version + "," + $Publisher 
+                        $line =  $LogTimeGenerated + "," + $hostname + "," + $applcation + "," + $version + "," + $Publisher + "," + $InstallDate
 
 
                	        #ファイルに書き込む
