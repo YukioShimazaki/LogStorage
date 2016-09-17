@@ -1,0 +1,7 @@
+access_log,/var/log/httpd,/var/log/logstorage/log_send,2
+error_log,/var/log/httpd,/var/log/logstorage/log_send,2
+
+
+
+
+
